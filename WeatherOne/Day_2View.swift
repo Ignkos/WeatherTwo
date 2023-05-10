@@ -9,8 +9,12 @@ import SwiftUI
 
 struct Day_2View: View {
     var weather: ResponseBody
+    @Binding var noteDict: [String: String]
+    @Binding var date: String
+    
     var body: some View {
         NavigationView{
+            let note = noteDict[date] ?? ""
             VStack{
                 HStack{
                     Spacer()
@@ -31,7 +35,7 @@ struct Day_2View: View {
                     Spacer()
                     Text("\((weather.list[9].pop)*100)"+"%").foregroundColor(Color.white).font(.system(size: 15)).bold()
                     Spacer()
-                    Image(systemName: "square.and.pencil")
+                    NavigationLink(destination: Pop_UpView(noteDict: $noteDict, lastModifiedDate: $date, date: weather.list[9].dt_txt, note: note)){Image(systemName: "square.and.pencil")}
                 }.frame(maxWidth: 300, maxHeight: 100)
                 HStack{
                         Text("\(weather.list[10].dt_txt)").bold().frame(maxWidth: 100)
@@ -40,7 +44,7 @@ struct Day_2View: View {
                     Spacer()
                     Text("\((weather.list[10].pop)*100)"+"%").foregroundColor(Color.white).font(.system(size: 15)).bold()
                     Spacer()
-                    Image(systemName: "square.and.pencil")
+                    NavigationLink(destination: Pop_UpView(noteDict: $noteDict, lastModifiedDate: $date, date: weather.list[10].dt_txt, note: note)){Image(systemName: "square.and.pencil")}
                 }.frame(maxWidth: 300, maxHeight: 100)
                 HStack{
                         Text("\(weather.list[11].dt_txt)").bold().frame(maxWidth: 100)
@@ -49,7 +53,7 @@ struct Day_2View: View {
                     Spacer()
                     Text("\((weather.list[11].pop)*100)"+"%").foregroundColor(Color.white).font(.system(size: 15)).bold()
                     Spacer()
-                    Image(systemName: "square.and.pencil")
+                    NavigationLink(destination: Pop_UpView(noteDict: $noteDict, lastModifiedDate: $date, date: weather.list[11].dt_txt, note: note)){Image(systemName: "square.and.pencil")}
                 }.frame(maxWidth: 300, maxHeight: 100)
                 HStack{
                         Text("\(weather.list[12].dt_txt)").bold().frame(maxWidth: 100)
@@ -58,7 +62,7 @@ struct Day_2View: View {
                     Spacer()
                     Text("\((weather.list[12].pop)*100)"+"%").foregroundColor(Color.white).font(.system(size: 15)).bold()
                     Spacer()
-                    Image(systemName: "square.and.pencil")
+                    NavigationLink(destination: Pop_UpView(noteDict: $noteDict, lastModifiedDate: $date, date: weather.list[12].dt_txt, note: note)){Image(systemName: "square.and.pencil")}
                 }.frame(maxWidth: 300, maxHeight: 100)
                 HStack{
                         Text("\(weather.list[13].dt_txt)").bold().frame(maxWidth: 100)
@@ -67,7 +71,7 @@ struct Day_2View: View {
                     Spacer()
                     Text("\((weather.list[13].pop)*100)"+"%").foregroundColor(Color.white).font(.system(size: 15)).bold()
                     Spacer()
-                    Image(systemName: "square.and.pencil")
+                    NavigationLink(destination: Pop_UpView(noteDict: $noteDict, lastModifiedDate: $date, date: weather.list[13].dt_txt, note: note)){Image(systemName: "square.and.pencil")}
                 }.frame(maxWidth: 300, maxHeight: 100)
                 HStack{
                         Text("\(weather.list[14].dt_txt)").bold().frame(maxWidth: 100)
@@ -76,7 +80,7 @@ struct Day_2View: View {
                     Spacer()
                     Text("\((weather.list[14].pop)*100)"+"%").foregroundColor(Color.white).font(.system(size: 15)).bold()
                     Spacer()
-                    Image(systemName: "square.and.pencil")
+                    NavigationLink(destination: Pop_UpView(noteDict: $noteDict, lastModifiedDate: $date, date: weather.list[14].dt_txt, note: note)){Image(systemName: "square.and.pencil")}
                 }.frame(maxWidth: 300, maxHeight: 100)
                 HStack{
                         Text("\(weather.list[15].dt_txt)").bold().frame(maxWidth: 100)
@@ -85,7 +89,7 @@ struct Day_2View: View {
                     Spacer()
                     Text("\((weather.list[15].pop)*100)"+"%").foregroundColor(Color.white).font(.system(size: 15)).bold()
                     Spacer()
-                    Image(systemName: "square.and.pencil")
+                    NavigationLink(destination: Pop_UpView(noteDict: $noteDict, lastModifiedDate: $date, date: weather.list[15].dt_txt, note: note)){Image(systemName: "square.and.pencil")}
                 }.frame(maxWidth: 300, maxHeight: 100)
                 HStack{
                         Text("\(weather.list[16].dt_txt)").bold().frame(maxWidth: 100)
@@ -94,7 +98,7 @@ struct Day_2View: View {
                     Spacer()
                     Text("\((weather.list[16].pop)*100)"+"%").foregroundColor(Color.white).font(.system(size: 15)).bold()
                     Spacer()
-                    Image(systemName: "square.and.pencil")
+                    NavigationLink(destination: Pop_UpView(noteDict: $noteDict, lastModifiedDate: $date, date: weather.list[16].dt_txt, note: note)){Image(systemName: "square.and.pencil")}
                 }.frame(maxWidth: 300, maxHeight: 100)
                 
                 
@@ -103,8 +107,3 @@ struct Day_2View: View {
     }
 }
 
-struct Day_2View_Previews: PreviewProvider {
-    static var previews: some View {
-        Day_2View(weather: previewWeather)
-    }
-}

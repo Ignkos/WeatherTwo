@@ -17,13 +17,12 @@ struct MainView: View {
             VStack{
                 Text("\(weather.city.name)").bold().font(.largeTitle).foregroundColor(Color.black)
                 Text("\(weather.list[0].dt_txt)").foregroundColor(Color.black)
-                Text("Weather now:\(weather.list[0].main.temp.roundDouble() )"+"°C").foregroundColor(Color.black).font(.system(size: 25)).bold()
-                Text("Feels like:").font(.title).foregroundColor(Color.black).font(.system(size: 100))
-                Text("\(weather.list[0].main.feels_like.roundDouble())"+"°C").foregroundColor(Color.black).font(.system(size: 25)).bold()
+                Text("Weather now: \(weather.list[0].main.temp.roundDouble() )"+"°C").foregroundColor(Color.black).font(.system(size: 25)).bold()
+                Text("Feels like: \(weather.list[0].main.feels_like.roundDouble())"+"°C").foregroundColor(Color.black).font(.system(size: 25)).bold()
                 Text("Chance of rain:").foregroundColor(Color.black).font(.system(size: 20))
                 Text("\((weather.list[0].pop)*100)"+"%").foregroundColor(Color.black).font(.system(size: 15)).bold()
-                Text("\(date)")
-                Text(noteDict[date] ?? "f")
+                Text("Your note on \(date):")
+                Text(noteDict[date] ?? "").font(.system(size: 25)).bold()
                 VStack{
                     Spacer()
                     Image("Moscow_sk")
@@ -31,13 +30,13 @@ struct MainView: View {
                         NavigationLink(destination: Day_1View(weather: weather, noteDict: $noteDict,date: $date)){
                             Capsule().fill(Color.black).padding().frame(maxWidth:100,maxHeight: 75).overlay(Text("24h").foregroundColor(Color.white))
                         }
-                        NavigationLink(destination: Day_2View(weather: weather)){
+                        NavigationLink(destination: Day_2View(weather: weather,noteDict: $noteDict,date: $date)){
                             Capsule().fill(Color.black).padding().frame(maxWidth:100,maxHeight: 75).overlay(Text("48h").foregroundColor(Color.white))
                         }
-                        NavigationLink(destination: Day_3View(weather: weather)){
+                        NavigationLink(destination: Day_3View(weather: weather,noteDict: $noteDict,date: $date)){
                             Capsule().fill(Color.black).padding().frame(maxWidth:100,maxHeight: 75).overlay(Text("72h").foregroundColor(Color.white))
                         }
-                        NavigationLink(destination: Day_4View(weather: weather)){
+                        NavigationLink(destination: Day_4View(weather: weather,noteDict: $noteDict,date: $date)){
                             Capsule().fill(Color.black).padding().frame(maxWidth:100,maxHeight: 75).overlay(Text("96h").foregroundColor(Color.white))
                         }
                     }

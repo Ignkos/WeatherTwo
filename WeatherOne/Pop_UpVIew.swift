@@ -10,12 +10,15 @@ import SwiftUI
 struct Pop_UpView: View {
     @Binding var noteDict:[String:String]
     
-    @Binding var date: String
+    @Binding var lastModifiedDate: String
+    
+    var date: String
     
     @State var note: String
     
     var body: some View {
-        VStack{
+        lastModifiedDate = date
+        return VStack{
             TextField("Your input", text: $note).onChange(of: note) { newValue in
                 self.noteDict[date] = newValue
             }
