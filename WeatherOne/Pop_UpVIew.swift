@@ -7,23 +7,22 @@
 
 import SwiftUI
 
-struct Pop_Up: View {
-    @Binding var note: [String: Binding<String>] {
-        didSet {
-            textInput = note[date]?.wrappedValue ?? ""
-            self.note[date] = self.$textInput
+struct Pop_UpView: View {
+    @Binding var noteDict:[String:String]
+    
+    @Binding var date: String
+    
+    @State var note: String
+    
+    var body: some View {
+        VStack{
+            TextField("Your input", text: $note).onChange(of: note) { newValue in
+                self.noteDict[date] = newValue
+            }
         }
     }
-    var date: String
-    
-    @State var textInput = ""
-
-    var body: some View {
-
-        
-        return TextField("Enter your note", text: $textInput)
-    }
 }
+
 
 //struct Pop_Up_Previews: PreviewProvider {
 //    static var previews: some View {

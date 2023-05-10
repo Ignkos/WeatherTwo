@@ -11,6 +11,8 @@ struct ContentView: View {
     @StateObject var locationManager = LocationManager()
     
     var weatherManager = WeatherManager()
+//    @State private var k = ""
+//    private var r = ""
     
     @State var weather: ResponseBody?
     
